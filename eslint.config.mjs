@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // beUI registry components (third-party motion primitives)
+    "src/components/motion/**",
   ]),
 ]);
 
