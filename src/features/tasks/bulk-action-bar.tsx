@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown, Trash2, X } from "lucide-react";
+import { ChevronDown, Trash, X } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { MemberAvatar } from "@/components/common/member-avatar";
@@ -125,7 +125,7 @@ export function BulkActionBar({ taskIds, onClear }: BulkActionBarProps) {
       </DropdownMenu>
 
       <Button variant="ghost" size="sm" className="text-destructive hover:text-destructive" onClick={() => setConfirmDelete(true)}>
-        <Trash2 aria-hidden />
+        <Trash aria-hidden />
         Delete
       </Button>
 
