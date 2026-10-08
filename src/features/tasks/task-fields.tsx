@@ -1,12 +1,10 @@
 "use client";
 
-import type { ReactNode } from "react";
 import { MemberAvatar } from "@/components/common/member-avatar";
 import { PriorityIcon } from "@/components/common/priority-icon";
 import { StatusIcon } from "@/components/common/status-icon";
 import { TONE_CLASSES } from "@/components/common/tone";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { LABEL_META, PRIORITY_META, STATUS_META } from "@/domain/meta";
@@ -32,34 +30,6 @@ const TRIGGER_CLASS: Record<FieldVariant, string> = {
   field: "w-full",
   inline: "h-7 w-auto min-w-0 border-transparent bg-transparent px-1.5 shadow-none hover:bg-muted",
 };
-
-export function FormField({
-  id,
-  label,
-  error,
-  children,
-  className,
-}: {
-  id: string;
-  label: string;
-  error?: string;
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <div className={className ?? "min-w-0 space-y-1.5"}>
-      <Label htmlFor={id} className="text-xs font-medium text-muted-foreground">
-        {label}
-      </Label>
-      {children}
-      {error ? (
-        <p role="alert" className="text-xs text-destructive">
-          {error}
-        </p>
-      ) : null}
-    </div>
-  );
-}
 
 export function StatusSelect({
   id,
