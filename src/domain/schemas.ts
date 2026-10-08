@@ -149,3 +149,17 @@ export const projectFormSchema = z.object({
 
 export type TaskFormValues = z.infer<typeof taskFormSchema>;
 export type ProjectFormValues = z.infer<typeof projectFormSchema>;
+
+export const profileFormSchema = z.object({
+  name: z.string().trim().min(2, "Name needs at least 2 characters.").max(60, "Keep the name under 60 characters."),
+  title: z.string().trim().max(60, "Keep the title under 60 characters."),
+  email: z.email("Enter a valid email address."),
+});
+
+export const workspaceNameSchema = z
+  .string()
+  .trim()
+  .min(2, "Workspace name needs at least 2 characters.")
+  .max(40, "Keep the workspace name under 40 characters.");
+
+export type ProfileFormValues = z.infer<typeof profileFormSchema>;
