@@ -36,8 +36,9 @@ export function TaskCardBody({ task, code, assignee, overlay = false }: TaskCard
   return (
     <div
       className={cn(
-        "flex flex-col gap-2.5 rounded-lg border bg-card p-3 text-left shadow-xs",
-        overlay && "rotate-1 shadow-lg ring-1 ring-foreground/10",
+        "flex flex-col gap-2.5 rounded-xl border bg-card p-3.5 text-left shadow-xs transition-[transform,box-shadow,border-color] duration-300 ease-out-expo",
+        !overlay && "hover:-translate-y-0.5 hover:border-foreground/15 hover:shadow-md",
+        overlay && "rotate-2 scale-[1.03] border-brand/30 shadow-2xl ring-4 ring-brand/10",
       )}
     >
       <div className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
@@ -82,7 +83,7 @@ export function DraggableTaskCard({ task, project, assignee, onOpen }: Draggable
     <div
       ref={setNodeRef}
       style={{ transform: CSS.Translate.toString(transform) }}
-      className={cn("group relative touch-none", isDragging && "opacity-40")}
+      className={cn("group relative touch-none transition-opacity duration-200", isDragging && "opacity-40")}
     >
       <div
         {...attributes}
