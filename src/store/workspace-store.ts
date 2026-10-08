@@ -136,6 +136,13 @@ export const workspaceActions = {
     dispatch({ type: "preferences/updated", patch });
   },
 
+  toggleSidebar(): void {
+    dispatch({
+      type: "preferences/updated",
+      patch: { sidebarCollapsed: !getState().preferences.sidebarCollapsed },
+    });
+  },
+
   renameWorkspace(workspaceId: string, name: string): void {
     dispatch({ type: "workspace/renamed", workspaceId, name });
   },
