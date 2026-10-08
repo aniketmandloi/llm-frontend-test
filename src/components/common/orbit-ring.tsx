@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import { cssVars } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
 interface OrbitRingProps {
@@ -41,7 +41,7 @@ export function OrbitRing({ value, size = 56, strokeWidth = 4, showValue = false
           strokeDashoffset={100 - percent}
           transform={`rotate(-90 ${center} ${center})`}
           className="animate-ring stroke-brand"
-          style={{ "--ring-offset": 100 - percent } as CSSProperties}
+          style={cssVars({ "--ring-offset": 100 - percent })}
         />
         {percent > 0 ? (
           <circle cx={satelliteX} cy={satelliteY} r={satelliteRadius} className="animate-satellite fill-brand stroke-card" strokeWidth={1.5} />
