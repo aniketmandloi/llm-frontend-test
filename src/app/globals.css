@@ -219,22 +219,22 @@
 }
 
 .animate-enter {
-  animation: enter 480ms var(--ease-out-expo) both;
+  animation: enter 480ms var(--ease-out-expo) backwards;
 }
 
 /* Stagger: set --i on the element. Capped so long lists do not wait forever. */
 .animate-reveal {
-  animation: reveal 560ms var(--ease-out-expo) both;
+  animation: reveal 560ms var(--ease-out-expo) backwards;
   animation-delay: calc(min(var(--i, 0), 12) * 42ms);
 }
 
 .animate-ring {
-  animation: ring-draw 1100ms var(--ease-out-expo) both;
+  animation: ring-draw 1100ms var(--ease-out-expo) backwards;
   animation-delay: 120ms;
 }
 
 .animate-satellite {
-  animation: satellite-in 420ms var(--ease-spring) both;
+  animation: satellite-in 420ms var(--ease-spring) backwards;
   animation-delay: 900ms;
   transform-origin: center;
 }
