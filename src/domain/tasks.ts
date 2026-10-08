@@ -1,13 +1,13 @@
 import { PRIORITY_META } from "./meta";
-import type {
-  CalendarDate,
-  Project,
-  Task,
-  TaskLabel,
-  TaskPriority,
-  TaskStatus,
+import {
+  TASK_STATUSES,
+  type CalendarDate,
+  type Project,
+  type Task,
+  type TaskLabel,
+  type TaskPriority,
+  type TaskStatus,
 } from "./types";
-import { TASK_STATUSES } from "./types";
 
 export const UNASSIGNED = "unassigned";
 
@@ -134,10 +134,13 @@ export function sortTasks(tasks: readonly Task[], sort: TaskSort): Task[] {
 }
 
 export function groupTasksByStatus(tasks: readonly Task[]): Record<TaskStatus, Task[]> {
-  const groups = Object.fromEntries(TASK_STATUSES.map((status) => [status, [] as Task[]])) as Record<
-    TaskStatus,
-    Task[]
-  >;
+  const groups: Record<TaskStatus, Task[]> = {
+    backlog: [],
+    todo: [],
+    in_progress: [],
+    in_review: [],
+    done: [],
+  };
   for (const task of tasks) {
     groups[task.status].push(task);
   }
