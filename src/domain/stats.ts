@@ -81,3 +81,17 @@ export function upcomingDeadlines(
 export function daysUntil(date: CalendarDate, today: CalendarDate): number {
   return dayDiff(today, date);
 }
+
+export interface ProjectMetrics extends TaskProgress {
+  open: number;
+  overdue: number;
+}
+
+export function projectMetrics(projectTasks: readonly Task[], today: CalendarDate): ProjectMetrics {
+  const progress = taskProgress(projectTasks);
+  return {
+    ...progress,
+    open: progress.total - progress.done,
+    overdue: projectTasks.filter((task) => isTaskOverdue(task, today)).length,
+  };
+}
