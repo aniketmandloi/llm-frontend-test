@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { ProjectStatusBadge } from "@/components/common/project-status-badge";
 import { EmptyState } from "@/components/common/empty-state";
+import { OrbitRing } from "@/components/common/orbit-ring";
 import { PageHeader } from "@/components/common/page-header";
 import { StatTile } from "@/components/common/stat-tile";
 import { TONE_CLASSES } from "@/components/common/tone";
@@ -12,7 +13,6 @@ import { ActivityFeed } from "@/features/activity/activity-feed";
 import { TaskWorkbench } from "@/features/tasks/task-workbench";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
 import { WORKSPACE_TODAY } from "@/data/clock";
 import { projectMetrics } from "@/domain/stats";
 import { formatCalendarDate } from "@/lib/format";
@@ -56,6 +56,7 @@ export function ProjectDetailView({ projectId }: { projectId: string }) {
       <PageHeader
         title={project.name}
         description={project.description}
+        leading={<OrbitRing value={metrics.percent} size={88} strokeWidth={6} showValue />}
         actions={
           <>
             <Button variant="outline" size="sm" onClick={() => setEditing(true)}>
@@ -86,23 +87,21 @@ export function ProjectDetailView({ projectId }: { projectId: string }) {
       </div>
 
       <section aria-label="Project metrics" className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-        <StatTile label="Progress" value={`${metrics.percent}%`}>
-          <Progress value={metrics.percent} className="h-1.5" aria-label="Overall progress" />
-        </StatTile>
+        <StatTile label="Progress" value={`${metrics.percent}%`} hint="Share of tasks done" />
         <StatTile label="Done" value={metrics.done} hint={`of ${metrics.total} tasks`} />
         <StatTile label="Open" value={metrics.open} hint="Still in flight" />
         <StatTile label="Overdue" value={metrics.overdue} emphasis={metrics.overdue > 0} hint="Past their due date" />
       </section>
 
       <section aria-labelledby="project-tasks-heading" className="flex min-w-0 flex-col gap-4">
-        <h2 id="project-tasks-heading" className="text-base font-semibold">
+        <h2 id="project-tasks-heading" className="font-display text-3xl leading-none">
           Tasks
         </h2>
         <TaskWorkbench projectId={project.id} />
       </section>
 
       <section aria-labelledby="project-activity-heading" className="flex flex-col gap-4">
-        <h2 id="project-activity-heading" className="text-base font-semibold">
+        <h2 id="project-activity-heading" className="font-display text-3xl leading-none">
           Recent activity
         </h2>
         <ActivityFeed events={recentActivity} membersById={membersById} emptyMessage="No activity for this project yet." />
