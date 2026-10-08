@@ -20,14 +20,14 @@ export function Topbar({
   const collapsed = preferences.sidebarCollapsed;
 
   return (
-    <header className="sticky top-0 z-20 flex h-14 shrink-0 items-center gap-2 border-b bg-background/85 px-3 backdrop-blur supports-[backdrop-filter]:bg-background/70 sm:px-4">
+    <header className="sticky top-0 z-20 flex h-16 shrink-0 items-center gap-2 bg-background/80 px-4 backdrop-blur-md supports-[backdrop-filter]:bg-background/65 sm:px-6 lg:px-10">
       <Button variant="ghost" size="icon-sm" className="md:hidden" onClick={onOpenMobileNav} aria-label="Open navigation">
         <Menu aria-hidden />
       </Button>
       <Button
         variant="ghost"
         size="icon-sm"
-        className="hidden md:inline-flex"
+        className="hidden text-muted-foreground md:inline-flex"
         onClick={workspaceActions.toggleSidebar}
         aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
         aria-keyshortcuts="["
@@ -39,22 +39,21 @@ export function Topbar({
         <Breadcrumbs />
       </div>
 
-      <Button
-        variant="outline"
-        size="sm"
+      <button
+        type="button"
         onClick={onOpenPalette}
-        className="hidden text-muted-foreground sm:inline-flex"
         aria-keyshortcuts="Control+K Meta+K"
+        className="hidden h-9 w-64 items-center gap-2 rounded-lg border bg-card px-3 text-sm text-muted-foreground shadow-xs transition-[border-color,box-shadow] duration-200 hover:border-foreground/20 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none lg:flex"
       >
-        <Search aria-hidden />
-        <span className="w-24 text-left">Search</span>
+        <Search className="size-4" aria-hidden />
+        <span className="flex-1 text-left">Search tasks and projects</span>
         <Kbd>⌘K</Kbd>
-      </Button>
-      <Button variant="ghost" size="icon-sm" className="sm:hidden" onClick={onOpenPalette} aria-label="Search">
+      </button>
+      <Button variant="ghost" size="icon-sm" className="lg:hidden" onClick={onOpenPalette} aria-label="Search">
         <Search aria-hidden />
       </Button>
 
-      <Button size="sm" onClick={() => openCreate()} aria-keyshortcuts="c">
+      <Button size="sm" onClick={() => openCreate()} aria-keyshortcuts="c" className="gap-1.5 shadow-sm">
         <Plus aria-hidden />
         <span className="hidden sm:inline">New task</span>
         <span className="sr-only sm:hidden">New task</span>
