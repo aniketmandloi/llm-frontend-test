@@ -63,8 +63,9 @@ export interface Task {
   completedAt: Timestamp | null;
 }
 
+/** Tasks stay in their project, so a task's code (e.g. WEB-12) never changes. */
 export type TaskPatch = Partial<
-  Pick<Task, "title" | "description" | "status" | "priority" | "assigneeId" | "labels" | "dueDate" | "projectId">
+  Pick<Task, "title" | "description" | "status" | "priority" | "assigneeId" | "labels" | "dueDate">
 >;
 
 export type ProjectPatch = Partial<
@@ -119,7 +120,6 @@ export interface Workspace {
 
 export interface Preferences {
   activeWorkspaceId: string;
-  workspaceName: string;
   defaultView: DefaultView;
   density: Density;
   sidebarCollapsed: boolean;
