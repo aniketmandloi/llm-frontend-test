@@ -31,13 +31,13 @@ export function BoardColumn({
   return (
     <section
       aria-label={`${label} column, ${tasks.length} tasks`}
-      className="flex min-w-64 flex-1 flex-col gap-3 rounded-xl bg-muted/40 p-2"
+      className="flex min-w-64 flex-1 flex-col gap-3 rounded-2xl bg-muted/70 p-2.5"
     >
-      <header className="flex items-center justify-between gap-2 px-1.5 pt-1">
+      <header className="flex items-center justify-between gap-2 px-1.5 pt-0.5">
         <div className="flex items-center gap-2">
           <StatusIcon status={status} />
           <h2 className="text-sm font-medium">{label}</h2>
-          <span className="rounded-md bg-background px-1.5 text-xs text-muted-foreground tabular-nums">
+          <span className="rounded-full bg-card px-2 text-xs text-muted-foreground tabular-nums shadow-xs">
             {tasks.length}
           </span>
         </div>
@@ -46,8 +46,8 @@ export function BoardColumn({
       <div
         ref={setNodeRef}
         className={cn(
-          "flex min-h-24 flex-1 flex-col gap-2 rounded-lg p-1 transition-colors",
-          isOver && "bg-background ring-2 ring-ring/40 ring-inset",
+          "flex min-h-24 flex-1 flex-col gap-2.5 rounded-xl p-1 transition-[background-color,box-shadow] duration-300 ease-out-expo",
+          isOver && "bg-brand-soft ring-2 ring-brand/35 ring-inset",
         )}
       >
         {tasks.map((task) => (
@@ -60,7 +60,9 @@ export function BoardColumn({
           />
         ))}
         {tasks.length === 0 && !isOver ? (
-          <p className="px-2 py-6 text-center text-xs text-muted-foreground">Drop tasks here</p>
+          <p className="rounded-xl border border-dashed px-2 py-8 text-center text-xs text-muted-foreground">
+            {isOver ? "Release to move here" : "Drop tasks here"}
+          </p>
         ) : null}
       </div>
 
