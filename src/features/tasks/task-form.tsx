@@ -1,6 +1,6 @@
 "use client";
 
-import { Trash2 } from "lucide-react";
+import { Trash } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -154,7 +154,7 @@ export function TaskForm(props: TaskFormProps) {
         <div className="flex shrink-0 items-center justify-between gap-2 border-t px-6 py-4">
           {props.mode === "edit" ? (
             <Button type="button" variant="ghost" className="text-destructive" onClick={() => setConfirmDelete(true)}>
-              <Trash2 aria-hidden />
+              <Trash aria-hidden />
               Delete
             </Button>
           ) : (
