@@ -96,7 +96,7 @@ export function ProjectProgressChart({ data }: { data: readonly ProjectProgressP
         <XAxis type="number" domain={[0, 100]} hide />
         <YAxis type="category" dataKey="name" width={170} tickLine={false} axisLine={false} />
         <ChartTooltip cursor={false} content={<ChartTooltipContent hideIndicator />} />
-        <Bar dataKey="percent" name="Complete" radius={[0, 4, 4, 0]} maxBarSize={20} unit="%">
+        <Bar dataKey="percent" name="Complete" radius={[0, 4, 4, 0]} maxBarSize={20}>
           {rows.map((row) => (
             <Cell key={row.name} fill={row.color} />
           ))}
