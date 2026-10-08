@@ -174,8 +174,15 @@ export function ProjectsView() {
         />
       ) : view === "grid" ? (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {rows.map((row) => (
-            <ProjectCard key={row.project.id} project={row.project} metrics={row.metrics} owner={row.owner} onEdit={openEdit} />
+          {rows.map((row, index) => (
+            <ProjectCard
+              key={row.project.id}
+              project={row.project}
+              metrics={row.metrics}
+              owner={row.owner}
+              onEdit={openEdit}
+              index={index}
+            />
           ))}
         </div>
       ) : (
