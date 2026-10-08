@@ -4,6 +4,7 @@ import { Trash2 } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
+import { FormField } from "@/components/common/form-field";
 import { Button } from "@/components/ui/button";
 import {
   AlertDialog,
@@ -24,7 +25,6 @@ import { workspaceActions, useWorkspaceState } from "@/store/workspace-store";
 import {
   AssigneeSelect,
   DueDateInput,
-  FormField,
   LabelPicker,
   PrioritySelect,
   ProjectSelect,
