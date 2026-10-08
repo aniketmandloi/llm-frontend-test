@@ -187,7 +187,7 @@ const TaskRow = memo(function TaskRow({
       onKeyDown={onRowKeyDown}
       onClick={() => onOpenTask(task.id)}
       className={cn(
-        "cursor-pointer outline-none focus-visible:bg-muted focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/50",
+        "cursor-pointer transition-colors duration-200 outline-none focus-visible:bg-muted focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/50 data-[state=selected]:bg-brand-soft hover:bg-foreground/[0.03]",
         density === "compact" ? "h-9" : "h-12",
       )}
     >
