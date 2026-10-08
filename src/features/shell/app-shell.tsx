@@ -24,12 +24,14 @@ export function AppShell({ children }: { children: ReactNode }) {
           <AppSidebar />
           <div className="flex min-w-0 flex-1 flex-col">
             <Topbar onOpenPalette={openPalette} onOpenMobileNav={() => setMobileNavOpen(true)} />
-            <main className="flex min-w-0 flex-1 flex-col px-4 py-6 sm:px-6 lg:px-8">{children}</main>
+            <main className="mx-auto flex w-full max-w-[1440px] min-w-0 flex-1 flex-col px-4 pt-4 pb-10 sm:px-6 lg:px-10">
+              {children}
+            </main>
           </div>
         </div>
 
         <Sheet open={mobileNavOpen} onOpenChange={setMobileNavOpen}>
-          <SheetContent side="left" className="w-72 p-0">
+          <SheetContent side="left" className="w-72 bg-sidebar p-0">
             <SheetHeader className="sr-only">
               <SheetTitle>Navigation</SheetTitle>
               <SheetDescription>Move between Orbit sections.</SheetDescription>
